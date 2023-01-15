@@ -1,0 +1,155 @@
+import React, { useEffect, useState } from "react";
+import '../App.css';
+import product1 from "../images/image-product-1.jpg"
+import product2 from "../images/image-product-2.jpg"
+import product3 from "../images/image-product-3.jpg"
+import product4 from "../images/image-product-4.jpg"
+import thumbnail1 from "../images/image-product-1-thumbnail.jpg";
+import thumbnail2 from "../images/image-product-2-thumbnail.jpg";
+import thumbnail3 from "../images/image-product-3-thumbnail.jpg";
+import thumbnail4 from "../images/image-product-4-thumbnail.jpg";
+import prev from "../images/icon-previous.svg";
+import next from "../images/icon-next.svg";
+import minus from "../images/icon-minus.svg";
+import pl from "../images/icon-plus.svg";
+import cart from "../images/icon-cart.svg"
+import close from "../images/icon-close.svg"
+import useCounter from "./useCounter";
+
+const Showcase = () => {
+    // const[count, increment, decrement] = useCounter()
+    const [overlay, setOverlay] = useState('')
+    const [products, setProducts] = useState([
+        product1,
+        product2,
+        product3,
+        product4
+    ])
+    // const [products, setProducts] = useState(null)
+ 
+    // Overlay Products Use State
+    const [vproducts, setVproducts] = useState([
+        product1,
+        product2,
+        product3,
+        product4
+    ])
+
+useEffect(() => {
+    setProducts(product1);
+    setVproducts(product1);
+},[])
+    const change1 = () => {
+        setProducts(product1);
+    }
+    const change2 = () => {
+        setProducts(product2);
+    }
+    const change3 = () => {
+        setProducts(product3);
+    }
+    const change4 = () => {
+        setProducts(product4);
+    }
+
+    // Overlay Products onclick events
+    const Onchange1 = () => {
+        setVproducts(product1);
+    }
+    const Onchange2 = () => {
+        setVproducts(product2);
+    }
+    const Onchange3 = () => {
+        setVproducts(product3);
+    }
+    const Onchange4 = () => {
+        setVproducts(product4);
+    }
+
+    const Overlay = () => {
+        setOverlay(prevOverlay => prevOverlay === 'active' ? '' : 'active');
+    }
+   const divStyle={
+    opacity: overlay === 'active' ? '0.2' : '1',
+    transition: overlay === 'active' ? '1s': '0'
+   }
+   
+    return (
+        <>
+            <div className="showcase-container" style={divStyle}>
+                <div className="product-showcase">
+                    <div className="product">
+                        <div className="image" onClick={Overlay}>
+                            <img src={products} alt="" />
+                        </div>
+                        <div className="swipe">
+                            <div className="left">
+                                <img src={prev} alt="" />
+                            </div>
+                            <div className="right">
+                                <img src={next} alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="preview">
+                        <img src={thumbnail1} alt="" onClick={change1} />
+                        <img src={thumbnail2} alt="" onClick={change2} />
+                        <img src={thumbnail3} alt="" onClick={change3} />
+                        <img src={thumbnail4} alt="" onClick={change4} />
+                    </div>
+                </div>
+                <div className="product-text">
+                    <h3>Sneaker Company</h3>
+                    <h1>Fall Limited Edition Sneakers</h1>
+                    <p> These low-profile sneakers are your perfect casual wear companion. Featuring a
+                        durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+                    <p className="price">$125.00 <span>50%</span><br /><del>$250.00</del></p>
+
+                    <div className="add-to-cart">
+                        <div className="add">
+                            <div className="minus">
+                                <img src={minus} alt="" />
+                            </div>
+                            <div className="no"></div>
+                            <div className="plus">
+                                <img src={pl} alt="" />
+                            </div>
+                        </div>
+                        <div className="button">
+                            <img src={cart} alt="" />Add to cart
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div className={`product-showcase-overlay ${overlay}`}>
+                <div className="product">
+                    <div className="close-popup" onClick={Overlay}>
+                        <img src={close} alt="" />
+                    </div>
+
+                    <div className="image">
+                        <img src={vproducts} alt="" />
+                    </div>
+                    <div className="swipe">
+                        <div className="left">
+                            <img src={prev} alt="" />
+                        </div>
+                        <div className="right">
+                            <img src={next} alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div className="preview">
+                    <img src={thumbnail1} alt="" onClick={Onchange1} />
+                    <img src={thumbnail2} alt="" onClick={Onchange2} />
+                    <img src={thumbnail3} alt="" onClick={Onchange3} />
+                    <img src={thumbnail4} alt="" onClick={Onchange4} />
+                </div>
+            </div>
+
+        </>
+    )
+}
+
+export default Showcase;
