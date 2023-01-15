@@ -9,8 +9,8 @@
   scroll-behavior: smooth;
 }
 
-.product-showcase-overlay{
-    display: none;
+.product-showcase-overlay {
+  display: none;
 }
 body {
   font-family: "Kumbh Sans", sans-serif;
@@ -112,6 +112,7 @@ body {
   cursor: pointer;
 }
 .cart .cart-counter {
+  display: none;
   color: white;
   background: hsl(26, 100%, 55%);
   height: 13px;
@@ -122,19 +123,20 @@ body {
   font-size: 10px;
   padding: 1px;
 }
+.cart .cart-counter.active{
+  display: block;
+}
 .prof img {
-  height: 29px;
+  height: 35px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   border-radius: 50%;
 }
 .prof img:hover {
-  border: solid 1px hsl(26, 100%, 55%);
+  border: solid 2px hsl(26, 100%, 55%);
 }
-.floating-card.active{
-  /* display: none; */
+.floating-card.active {
   transform: translateY(0);
-  /* z-index: 2; */
 }
 .floating-card {
   transform: translateY(-140%);
@@ -151,6 +153,7 @@ body {
   margin: 4px 3vw;
   border-radius: 10px;
   top: 70px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 }
 .floating-card .card-head {
   padding-top: 24px;
@@ -168,10 +171,10 @@ body {
   align-items: center;
   gap: 32px;
 }
-.card-body .buy-items.active{
-    display: flex;
+.card-body .buy-items.active {
+  display: flex;
 }
-.card-body .buy-items{
+.card-body .buy-items {
   display: none;
   justify-content: space-between;
   align-items: center;
@@ -202,14 +205,14 @@ body {
   color: hsl(0, 0%, 100%);
   transition: all 0.3s ease-in-out;
 }
-.check-out:hover{
+.check-out:hover {
   background: hsl(26, 74%, 62%);
 }
-.card-body .empty.active{
-    display: block;
+.card-body .empty.active {
+  display: block;
 }
 .card-body .empty {
-display: none;
+  display: none;
   text-align: start;
 }
 .showcase-container {
@@ -222,27 +225,27 @@ display: none;
   width: 100%;
   object-fit: cover;
 }
-.product .image{
+.product .image {
   pointer-events: none;
   display: flex;
   overflow-x: hidden;
 }
-.image img{
+.image img {
   transition: transform 0.3s ease-in-out;
 }
 .preview {
   display: none;
 }
 .swipe {
-  
   z-index: 0;
   display: flex;
   width: 94vw;
   margin: 0 3vw;
   justify-content: space-between;
-  top: calc(50vh - 68px);
+  /* top: calc(50vh - 68px); */
+  top: 50%;
   position: absolute;
-
+  transform: translateY(-50%);
 }
 .swipe .left,
 .swipe .right {
@@ -252,22 +255,10 @@ display: none;
   padding: 3px 6px 0 6px;
   transition: 0.3s ease-in-out;
 }
-.swipe .left:hover {
-  background: hsl(26, 100%, 55%);
-}
-.swipe .right:hover {
-  background: hsl(25, 86%, 43%);
-}
+
 .swipe img {
   transition: 0.3s ease-in-out;
 }
-.swipe .left img:hover {
-  filter: invert(1);
-}
-.swipe .right img:hover {
-  filter: invert(1);
-}
-
 .product-text {
   display: flex;
   flex-direction: column;
@@ -339,7 +330,6 @@ display: none;
 }
 .add-to-cart .add img {
   cursor: pointer;
-
 }
 .add-to-cart .button {
   cursor: pointer;
@@ -354,7 +344,7 @@ display: none;
   gap: 15px;
   transition: all 0.3s ease-in-out;
 }
-.add-to-cart .button img{
+.add-to-cart .button img {
   height: 20px;
   width: 20px;
   object-fit: cover;
@@ -383,6 +373,76 @@ footer a:hover {
   color: hsl(219, 9%, 45%);
 }
 @media (min-width: 600px) {
+  .floating-card {
+    right: 0;
+  }
+  .showcase-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .showcase-container .product-showcase {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 445px;
+  }
+  .swipe {
+    display: none;
+  }
+  .product-showcase .product img {
+    border-radius: 12px;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  .showcase-container .product-showcase .preview {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 29px;
+  }
+  .showcase-container .preview img {
+    object-fit: cover;
+    height: auto;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .showcase-container .preview img:hover {
+    background: hsl(25, 100%, 94%);
+    opacity: 0.8;
+    /* border: 3px solid hsl(26, 100%, 55%); */
+  }
+  .preview img.active{
+    border: 3px solid hsl(26, 100%, 55%);
+    opacity: 0.8;
+  }
+  .product-text {
+    width: 445px;
+  }
+  .product-text h1 {
+    font-size: 30px;
+  }
+  .product-text p {
+    width: 100%;
+  }
+  .product-text .price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100px;
+  }
+  .price del {
+    padding-left: 0;
+  }
+  .add-to-cart {
+    flex-direction: row;
+    width: 445px;
+    gap: 16px;
+  }
+}
+@media (min-width: 900px) {
   .toggle {
     display: none;
   }
@@ -429,79 +489,39 @@ footer a:hover {
     width: 100%;
   }
   .floating-card {
-    right: 0;
     top: 80px;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   }
   .showcase-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
     height: max-content;
-    width: 90vw;
     gap: 125px;
-    margin: 0 5vw;
     padding-top: 10px;
     padding-bottom: 10px;
   }
   .showcase-container .swipe {
     display: none;
   }
-  .showcase-container .product-showcase{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .showcase-container .product-showcase {
     gap: 10px;
-    
   }
-  .showcase-container .product-showcase .product{
+  .showcase-container .product-showcase .product {
     width: 100%;
     height: 100%;
   }
   .product-showcase .product img {
     pointer-events: visible;
-    border-radius: 12px;
-    overflow-x: hidden;
-    width: 100%;
   }
-  .showcase-container .product-showcase .preview {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 29px;
-  }
-  .showcase-container .preview img {
-    object-fit: cover;
-    height: auto;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .showcase-container .preview img:hover {
-    background: hsl(25, 100%, 94%);
-    opacity: 0.5;
-  }
-  .product-text {
-    width: 100%;
-  }
-  .product-text h1 {
-    font-size: 30px;
-  }
-  .product-text p {
-    width: 100%;
-  }
-  .product-showcase-overlay.active{
+
+  .product-showcase-overlay.active {
     display: flex;
-     flex-direction: column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
- .product-showcase-overlay{
+  .product-showcase-overlay {
     top: 50%;
     transform: translateY(-50%);
-    position: absolute;
+    position: fixed;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -509,45 +529,50 @@ footer a:hover {
     gap: 10px;
     width: 100%;
     height: auto;
-    
- }
- .product-showcase-overlay .product{
+  }
+  .product-showcase-overlay .product {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 450px;
- }
-  .close-popup{
+  }
+  .close-popup {
     cursor: pointer;
     padding-left: 430px;
- }
- .product-showcase-overlay .product img{
+  }
+  .product-showcase-overlay .product img {
     width: 100%;
     height: auto;
- }
- .product-showcase-overlay .product .swipe{
+    border-radius: 12px;
+  }
+  .product-showcase-overlay .product .swipe {
     width: 475px;
     top: 40%;
     transform: translateY(-40%);
- }
- .product-showcase-overlay .preview{
+    display: flex;
+  }
+  .product-showcase-overlay .preview2 {
+    /* position: absolute; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 450px;
     gap: 29px;
- }
- .product-showcase-overlay .preview img{
+    
+  }
+  .product-showcase-overlay .preview2 img {
     width: 89px;
     height: 89px;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
- }
- .product-showcase-overlay .preview img:hover{
-     opacity: 0.5;
-     background: hsl(25, 100%, 94%);
-     border: 2px solid hsl(26, 100%, 55%);
- }
- 
+  }
+  .product-showcase-overlay .preview2 img:hover {
+    opacity: 0.5;
+    background: hsl(25, 100%, 94%);
+  }
+  .product-showcase-overlay .preview2 img.active{
+    border: 3px solid hsl(26, 100%, 55%);
+    opacity: 0.8;
+  }
 }
