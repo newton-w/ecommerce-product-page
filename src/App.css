@@ -194,16 +194,19 @@ body {
   height: 16px;
 }
 .check-out {
+  display: none;
   cursor: pointer;
   height: 56px;
   width: 311px;
   border-radius: 10px;
   background: hsl(26, 100%, 55%);
-  display: flex;
   justify-content: center;
   align-items: center;
   color: hsl(0, 0%, 100%);
   transition: all 0.3s ease-in-out;
+}
+.check-out.active{
+  display: flex;
 }
 .check-out:hover {
   background: hsl(26, 74%, 62%);
@@ -538,7 +541,7 @@ footer a:hover {
   }
   .close-popup {
     cursor: pointer;
-    padding-left: 430px;
+    padding-left: 430px; 
   }
   .product-showcase-overlay .product img {
     width: 100%;
