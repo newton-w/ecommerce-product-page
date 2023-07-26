@@ -284,16 +284,16 @@ const Nav = () => {
           <div className={`menu ${tog}`}>
             <ul>
               <li>
-                <a href="https://github.com/newton-w">Collections</a>{" "}
+                <a href="#">Collections</a>{" "}
               </li>
               <li>
-                <a href="https://github.com/newton-w">Men</a>
+                <a href="#">Men</a>
               </li>
               <li>
-                <a href="https://github.com/newton-w">About</a>
+                <a href="#">About</a>
               </li>
               <li>
-                <a href="https://github.com/newton-w">Contact</a>
+                <a href="#">Contact</a>
               </li>
             </ul>
           </div>
